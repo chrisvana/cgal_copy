@@ -5,13 +5,15 @@
                      "-DBOOST_INCLUDEDIR=$ROOT_DIR/$BOOST_INCLUDEDIR",
                      "-DBoost_NO_SYSTEM_PATHS=TRUE",
                      "-DGMP_INCLUDE_DIR=$ROOT_DIR/$GMP_INCLUDE",
-                     "-DGMP_LIB_DIR=$ROOT_DIR/$GMP_LIB",
+                     "-DGMP_LIBRARIES=$ROOT_DIR/$GMP_LIB",
                      "-DMPFR_INCLUDE_DIR=$ROOT_DIR/$MPFR_INCLUDE",
-                     "-DMPFR_LIB_DIR=$ROOT_DIR/$MPFR_LIB"
+                     "-DMPFR_LIBRARIES=$ROOT_DIR/$MPFR_LIB",
+                     "-DBUILD_SHARED_LIBS=FALSE"
     ],
-    "dependencies": [ "../boost:boost", "../mpfa:mpfa", "../gmp:gmp" ],
+    "dependencies": [ "../boost:boost", "../mpfr:mpfr", "../gmp:gmp" ],
     "make_target": "",
     "outs": [
+        "$GEN_DIR/build/lib/libCGAL.a"
      ],
     "licenses": [ "http://opensource.org/licenses/BSL-1.0",
                   "http://opensource.org/licenses/gpl-3.0",
@@ -21,6 +23,7 @@
   { "cc_library": {
      "name": "cgal",
      "cc_objects": [
+        "$GEN_DIR/build/lib/libCGAL.a"
      ],
      "strict_file_mode": false,
      "include_dirs": [ "." ],
